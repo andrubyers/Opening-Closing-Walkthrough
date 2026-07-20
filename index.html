@@ -352,125 +352,75 @@
 </div>
 
 <script>
-  // Render generic checklist item with conditional Fix/Replace details box
-  function renderChecklist(containerId, items) {
-    const c = document.getElementById(containerId);
-    items.forEach((item) => {
-      const name = item.toLowerCase().replace(/[^a-z0-9]/g, '_');
-      c.innerHTML += `
-        <div class="status-item">
-          <div class="status-row">
-            <span class="status-label">${item}</span>
-            <div class="status-options">
-              <label><input type="radio" name="st_${name}" value="OK" checked onchange="toggleDetails(this, '${name}')"> OK</label>
-              <label><input type="radio" name="st_${name}" value="Repair" onchange="toggleDetails(this, '${name}')"> Fix</label>
-              <label><input type="radio" name="st_${name}" value="Replace" onchange="toggleDetails(this, '${name}')"> Replace</label>
-            </div>
-          </div>
-          <div class="details-box" id="details_${name}">
-            <input type="text" id="input_${name}" placeholder="Required: Explain what needs fix/replacement..." name="details_${name}">
-          </div>
-        </div>
-      `;
-    });
-  }
+  // 1. PASTE YOUR GOOGLE WEB APP URL BETWEEN THE QUOTES BELOW:
+const GOOGLE_SCRIPT_URL = "https://script.google.com/a/macros/unitedpools.com/s/AKfycbxDla8IBqTcdV5cMl-qN0FHdAT25UAPCeuGTxOYOezwx4dTd1TO1ND0PIktV9CaUm9g/exec";
 
-  // Toggle details text input and required attribute
-  function toggleDetails(radio, name) {
-    const detailsBox = document.getElementById(`details_${name}`);
-    const inputField = document.getElementById(`input_${name}`);
-    
-    if (radio && (radio.value === 'Repair' || radio.value === 'Replace')) {
-      detailsBox.style.display = 'block';
-      inputField.setAttribute('required', 'required');
-      inputField.focus();
-    } else if (detailsBox && inputField) {
-      detailsBox.style.display = 'none';
-      inputField.removeAttribute('required');
-      inputField.value = ''; 
+// 2. THIS SENDS YOUR FORM DATA & PHOTOS TO GOOGLE DRIVE AUTOMATICALLY
+document.getElementById('inspectionForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  submitBtn.innerText = "Uploading to Drive...";
+  submitBtn.disabled = true;
+
+  const formData = new FormData(this);
+  const fields = {};
+  const photos = [];
+
+  // Extract text and radio selections
+  formData.forEach((value, key) => {
+    if (!(value instanceof File)) {
+      fields[key] = value;
+    }
+  });
+
+  // Convert photos to upload to Drive
+  const fileInputs = this.querySelectorAll('input[type="file"]');
+  for (let input of fileInputs) {
+    if (input.files.length > 0) {
+      for (let file of input.files) {
+        const base64 = await convertBase64(file);
+        photos.push({
+          category: input.name,
+          data: base64
+        });
+      }
     }
   }
 
-  // Render Gear & Safety
-  renderChecklist('maint-safety-list', [
-    'Vac Head / Hose / Pole', 'Rakes & Brushes', 'Power Vac & Battery',
-    'Test Kit / Salt Kit', 'First Aid / HazMat / Clean Kit', 
-    'Rescue Tubes / Ring Buoy / Rope', 'Signs (911, Rules, CPO, Drowning)',
-    'Shepherd Hook & Pole', 'Emergency Phone / Box', 'ADA Lift & SDS Manual'
-  ]);
+  const payload = {
+    pool_name: fields['pool_name'],
+    date: fields['date'],
+    fields: fields,
+    photos: photos
+  };
 
-  // Render Flow / Fitting items
-  renderChecklist('flow-filt-list', [
-    'Skimmers & Weirs', 'Grates & Return Eyes', 'Filter Lid O-Ring & Assembly',
-    'PSI Gauges & Air Bleed', 'Piping & Valves'
-  ]);
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
 
-  // Render Deck & Shell
-  renderChecklist('deck-shell-list', [
-    'Handrails & Ladders', 'Guard Stands / Diving Board', 'Deck Condition & Drains',
-    'Coping & Expansion Joints', 'Pool Tile & Surface', 'Depth / No Dive Markers',
-    'Fence & Gate Controls', 'Bathrooms & Supplies'
-  ]);
-
-  // Render Detailed Motor & Pump Sections #1 through #4
-  const pumpsContainer = document.getElementById('pumps-detailed-container');
-  for (let i = 1; i <= 4; i++) {
-    const prefix = `p${i}`;
-    pumpsContainer.innerHTML += `
-      <div class="sub-section-title">Pump & Motor Equipment #${i}</div>
-      
-      <div class="grid-2">
-        <div><label>Brand / Model</label><input type="text" name="${prefix}_brand" placeholder="e.g. Pentair WhisperFlo"></div>
-        <div><label>Serial Number</label><input type="text" name="${prefix}_serial"></div>
-      </div>
-
-      <div class="grid-2">
-        <div><label>Horsepower (HP)</label><input type="text" name="${prefix}_hp" placeholder="e.g. 2.0 HP"></div>
-        <div><label>Phase / RPM / Frame</label><input type="text" name="${prefix}_specs" placeholder="Single / 3450 / 56Y"></div>
-      </div>
-
-      <div style="margin-top: 6px;">
-        <label>Electrical Checks</label>
-        <div class="checkbox-inline">
-          <label><input type="checkbox" name="${prefix}_grounded" value="Yes"> Grounded</label>
-          <label><input type="checkbox" name="${prefix}_gfci" value="Yes"> GFCI Breaker</label>
-          <label><input type="checkbox" name="${prefix}_starter" value="Yes"> Starter</label>
-          <label><input type="checkbox" name="${prefix}_timer" value="Yes"> Timer</label>
-        </div>
-      </div>
-
-      <!-- MOTOR & PUMP LIFESPAN -->
-      <div class="lifespan-block">
-        <div class="lifespan-title">Motor & Pump #${i} - Estimated Remaining Lifespan:</div>
-        <div class="radio-inline">
-          <label><input type="radio" name="${prefix}_lifespan" value="1-2 years"> 1–2 yrs</label>
-          <label><input type="radio" name="${prefix}_lifespan" value="3-5 years"> 3–5 yrs</label>
-          <label><input type="radio" name="${prefix}_lifespan" value="5-7 years"> 5–7 yrs</label>
-          <label><input type="radio" name="${prefix}_lifespan" value="7+ years"> 7+ yrs</label>
-        </div>
-      </div>
-
-      <div class="status-item" style="margin-top: 6px;">
-        <div class="status-row">
-          <span class="status-label">Overall Motor & Pump Status</span>
-          <div class="status-options">
-            <label><input type="radio" name="st_${prefix}_status" value="OK" checked onchange="toggleDetails(this, '${prefix}_status')"> OK</label>
-            <label><input type="radio" name="st_${prefix}_status" value="Repair" onchange="toggleDetails(this, '${prefix}_status')"> Fix</label>
-            <label><input type="radio" name="st_${prefix}_status" value="Replace" onchange="toggleDetails(this, '${prefix}_status')"> Replace</label>
-          </div>
-        </div>
-        <div class="details-box" id="details_${prefix}_status">
-          <input type="text" id="input_${prefix}_status" placeholder="Required: Explain issues (impeller, volute, seals, lint pot, wire)..." name="details_${prefix}_status">
-        </div>
-      </div>
-    `;
+    alert('United Pools Inspection Report & Photos successfully saved to Google Drive!');
+    this.reset();
+  } catch (err) {
+    alert('Upload error: ' + err.message);
+  } finally {
+    submitBtn.innerText = "Submit Inspection Report";
+    submitBtn.disabled = false;
   }
+});
 
-  // Handle Submission
-  document.getElementById('inspectionForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('United Pools inspection report submitted successfully!');
+// Helper function to process photos
+function convertBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => resolve(fileReader.result);
+    fileReader.onerror = (error) => reject(error);
   });
+}
 </script>
 
 </body>
