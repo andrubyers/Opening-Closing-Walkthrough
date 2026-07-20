@@ -117,17 +117,12 @@
     .status-options { display: flex; gap: 8px; }
     .status-options label { margin: 0; font-size: 0.8rem; display: flex; align-items: center; gap: 3px; font-weight: normal; cursor: pointer; color: var(--text-dark); }
 
-    .details-box {
-      display: none;
-      margin-top: 8px;
+    .details-input-static {
+      margin-top: 6px;
     }
-    .details-box input {
-      border-color: var(--danger-red);
-      background-color: var(--danger-bg);
-    }
-    .details-box input::placeholder {
-      color: #a94442;
-      font-size: 0.8rem;
+    .details-input-static input {
+      border-color: var(--border);
+      background-color: #ffffff;
     }
 
     .photo-btn {
@@ -152,9 +147,6 @@
       letter-spacing: 0.5px;
       cursor: pointer;
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-    }
-    button.submit-btn:active {
-      background: var(--up-navy-light);
     }
   </style>
 </head>
@@ -210,7 +202,137 @@
     <!-- MAINTENANCE & SAFETY EQUIPMENT -->
     <div class="card">
       <div class="card-title">Maintenance & Safety Gear</div>
-      <div id="maint-safety-list"></div>
+      
+      <!-- ITEM 1 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Vac Head / Hose / Pole</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_vac_gear" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_vac_gear" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_vac_gear" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_vac_gear" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Rakes & Brushes</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_rakes_brushes" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_rakes_brushes" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_rakes_brushes" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_rakes_brushes" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Power Vac & Battery</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_power_vac" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_power_vac" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_power_vac" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_power_vac" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Test Kit / Salt Kit</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_test_kits" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_test_kits" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_test_kits" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_test_kits" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">First Aid / HazMat / Clean Kit</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_safety_kits" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_safety_kits" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_safety_kits" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_safety_kits" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 6 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Rescue Tubes / Ring Buoy / Rope</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_rescue_equip" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_rescue_equip" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_rescue_equip" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_rescue_equip" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 7 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Safety Signs (911, Rules, CPO, Drowning)</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_safety_signs" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_safety_signs" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_safety_signs" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_safety_signs" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 8 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Shepherd Hook & Pole</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_shepherd_hook" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_shepherd_hook" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_shepherd_hook" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_shepherd_hook" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 9 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Emergency Phone & Box</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_emerg_phone" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_emerg_phone" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_emerg_phone" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_emerg_phone" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- ITEM 10 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">ADA Lift & SDS Manual</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_ada_sds" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_ada_sds" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_ada_sds" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_ada_sds" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
       <div class="photo-btn">
         <label>📷 Attach Gear Photos <input type="file" name="photos_gear" accept="image/*" multiple style="display:none"></label>
       </div>
@@ -291,11 +413,58 @@
       </div>
 
       <div class="sub-section-title">Flow & Fitting Items</div>
-      <div id="flow-filt-list"></div>
+      
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Skimmers & Weirs</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_skimmers_weirs" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_skimmers_weirs" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_skimmers_weirs" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_skimmers_weirs" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Grates & Return Eyes</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_grates_returns" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_grates_returns" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_grates_returns" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_grates_returns" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Filter Lid O-Ring & Assembly</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_filter_oring" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_filter_oring" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_filter_oring" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_filter_oring" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">PSI Gauges & Air Bleed</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_psi_gauges" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_psi_gauges" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_psi_gauges" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_psi_gauges" placeholder="Notes / Repair details if needed..."></div>
+      </div>
 
       <div class="grid-2" style="margin-top: 10px;">
-        <div><label>Do Skimmers Pull?</label><select><option>Yes</option><option>No</option></select></div>
-        <div><label>Inline Vac Works?</label><select><option>Yes</option><option>No</option></select></div>
+        <div><label>Do Skimmers Pull?</label><select name="skimmers_pull"><option>Yes</option><option>No</option></select></div>
+        <div><label>Inline Vac Works?</label><select name="inline_vac"><option>Yes</option><option>No</option></select></div>
       </div>
 
       <div class="photo-btn">
@@ -306,7 +475,167 @@
     <!-- MOTOR AND PUMP EQUIPMENT (#1 - #4) -->
     <div class="card">
       <div class="card-title">Motor & Pump Equipment</div>
-      <div id="pumps-detailed-container"></div>
+      
+      <!-- PUMP #1 -->
+      <div class="sub-section-title">Pump & Motor Equipment #1</div>
+      <div class="grid-2">
+        <div><label>Brand / Model</label><input type="text" name="p1_brand" placeholder="e.g. Pentair WhisperFlo"></div>
+        <div><label>Serial Number</label><input type="text" name="p1_serial"></div>
+      </div>
+      <div class="grid-2">
+        <div><label>Horsepower (HP)</label><input type="text" name="p1_hp" placeholder="e.g. 2.0 HP"></div>
+        <div><label>Phase / RPM / Frame</label><input type="text" name="p1_specs" placeholder="Single / 3450 / 56Y"></div>
+      </div>
+      <div style="margin-top: 6px;">
+        <label>Electrical Checks</label>
+        <div class="checkbox-inline">
+          <label><input type="checkbox" name="p1_grounded" value="Yes"> Grounded</label>
+          <label><input type="checkbox" name="p1_gfci" value="Yes"> GFCI Breaker</label>
+          <label><input type="checkbox" name="p1_starter" value="Yes"> Starter</label>
+          <label><input type="checkbox" name="p1_timer" value="Yes"> Timer</label>
+        </div>
+      </div>
+      <div class="lifespan-block">
+        <div class="lifespan-title">Motor & Pump #1 - Estimated Remaining Lifespan:</div>
+        <div class="radio-inline">
+          <label><input type="radio" name="p1_lifespan" value="1-2 years"> 1–2 yrs</label>
+          <label><input type="radio" name="p1_lifespan" value="3-5 years"> 3–5 yrs</label>
+          <label><input type="radio" name="p1_lifespan" value="5-7 years"> 5–7 yrs</label>
+          <label><input type="radio" name="p1_lifespan" value="7+ years"> 7+ yrs</label>
+        </div>
+      </div>
+      <div class="status-item" style="margin-top: 6px;">
+        <div class="status-row">
+          <span class="status-label">Overall Motor & Pump Status</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_p1_status" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_p1_status" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_p1_status" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_p1_status" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- PUMP #2 -->
+      <div class="sub-section-title">Pump & Motor Equipment #2</div>
+      <div class="grid-2">
+        <div><label>Brand / Model</label><input type="text" name="p2_brand"></div>
+        <div><label>Serial Number</label><input type="text" name="p2_serial"></div>
+      </div>
+      <div class="grid-2">
+        <div><label>Horsepower (HP)</label><input type="text" name="p2_hp"></div>
+        <div><label>Phase / RPM / Frame</label><input type="text" name="p2_specs"></div>
+      </div>
+      <div style="margin-top: 6px;">
+        <label>Electrical Checks</label>
+        <div class="checkbox-inline">
+          <label><input type="checkbox" name="p2_grounded" value="Yes"> Grounded</label>
+          <label><input type="checkbox" name="p2_gfci" value="Yes"> GFCI Breaker</label>
+          <label><input type="checkbox" name="p2_starter" value="Yes"> Starter</label>
+          <label><input type="checkbox" name="p2_timer" value="Yes"> Timer</label>
+        </div>
+      </div>
+      <div class="lifespan-block">
+        <div class="lifespan-title">Motor & Pump #2 - Estimated Remaining Lifespan:</div>
+        <div class="radio-inline">
+          <label><input type="radio" name="p2_lifespan" value="1-2 years"> 1–2 yrs</label>
+          <label><input type="radio" name="p2_lifespan" value="3-5 years"> 3–5 yrs</label>
+          <label><input type="radio" name="p2_lifespan" value="5-7 years"> 5–7 yrs</label>
+          <label><input type="radio" name="p2_lifespan" value="7+ years"> 7+ yrs</label>
+        </div>
+      </div>
+      <div class="status-item" style="margin-top: 6px;">
+        <div class="status-row">
+          <span class="status-label">Overall Motor & Pump Status</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_p2_status" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_p2_status" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_p2_status" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_p2_status" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- PUMP #3 -->
+      <div class="sub-section-title">Pump & Motor Equipment #3</div>
+      <div class="grid-2">
+        <div><label>Brand / Model</label><input type="text" name="p3_brand"></div>
+        <div><label>Serial Number</label><input type="text" name="p3_serial"></div>
+      </div>
+      <div class="grid-2">
+        <div><label>Horsepower (HP)</label><input type="text" name="p3_hp"></div>
+        <div><label>Phase / RPM / Frame</label><input type="text" name="p3_specs"></div>
+      </div>
+      <div style="margin-top: 6px;">
+        <label>Electrical Checks</label>
+        <div class="checkbox-inline">
+          <label><input type="checkbox" name="p3_grounded" value="Yes"> Grounded</label>
+          <label><input type="checkbox" name="p3_gfci" value="Yes"> GFCI Breaker</label>
+          <label><input type="checkbox" name="p3_starter" value="Yes"> Starter</label>
+          <label><input type="checkbox" name="p3_timer" value="Yes"> Timer</label>
+        </div>
+      </div>
+      <div class="lifespan-block">
+        <div class="lifespan-title">Motor & Pump #3 - Estimated Remaining Lifespan:</div>
+        <div class="radio-inline">
+          <label><input type="radio" name="p3_lifespan" value="1-2 years"> 1–2 yrs</label>
+          <label><input type="radio" name="p3_lifespan" value="3-5 years"> 3–5 yrs</label>
+          <label><input type="radio" name="p3_lifespan" value="5-7 years"> 5–7 yrs</label>
+          <label><input type="radio" name="p3_lifespan" value="7+ years"> 7+ yrs</label>
+        </div>
+      </div>
+      <div class="status-item" style="margin-top: 6px;">
+        <div class="status-row">
+          <span class="status-label">Overall Motor & Pump Status</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_p3_status" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_p3_status" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_p3_status" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_p3_status" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <!-- PUMP #4 -->
+      <div class="sub-section-title">Pump & Motor Equipment #4</div>
+      <div class="grid-2">
+        <div><label>Brand / Model</label><input type="text" name="p4_brand"></div>
+        <div><label>Serial Number</label><input type="text" name="p4_serial"></div>
+      </div>
+      <div class="grid-2">
+        <div><label>Horsepower (HP)</label><input type="text" name="p4_hp"></div>
+        <div><label>Phase / RPM / Frame</label><input type="text" name="p4_specs"></div>
+      </div>
+      <div style="margin-top: 6px;">
+        <label>Electrical Checks</label>
+        <div class="checkbox-inline">
+          <label><input type="checkbox" name="p4_grounded" value="Yes"> Grounded</label>
+          <label><input type="checkbox" name="p4_gfci" value="Yes"> GFCI Breaker</label>
+          <label><input type="checkbox" name="p4_starter" value="Yes"> Starter</label>
+          <label><input type="checkbox" name="p4_timer" value="Yes"> Timer</label>
+        </div>
+      </div>
+      <div class="lifespan-block">
+        <div class="lifespan-title">Motor & Pump #4 - Estimated Remaining Lifespan:</div>
+        <div class="radio-inline">
+          <label><input type="radio" name="p4_lifespan" value="1-2 years"> 1–2 yrs</label>
+          <label><input type="radio" name="p4_lifespan" value="3-5 years"> 3–5 yrs</label>
+          <label><input type="radio" name="p4_lifespan" value="5-7 years"> 5–7 yrs</label>
+          <label><input type="radio" name="p4_lifespan" value="7+ years"> 7+ yrs</label>
+        </div>
+      </div>
+      <div class="status-item" style="margin-top: 6px;">
+        <div class="status-row">
+          <span class="status-label">Overall Motor & Pump Status</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_p4_status" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_p4_status" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_p4_status" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_p4_status" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
       <div class="photo-btn">
         <label>📷 Attach Pump Room Photos <input type="file" name="photos_pumps" accept="image/*" multiple style="display:none"></label>
       </div>
@@ -326,8 +655,102 @@
         </div>
       </div>
 
-      <div id="deck-shell-list"></div>
-      
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Handrails & Ladders</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_handrails" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_handrails" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_handrails" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_handrails" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Guard Stands / Diving Board</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_guardstands" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_guardstands" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_guardstands" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_guardstands" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Deck Condition & Drains</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_deck_drains" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_deck_drains" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_deck_drains" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_deck_drains" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Coping & Expansion Joints</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_coping_joints" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_coping_joints" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_coping_joints" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_coping_joints" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Pool Tile & Surface</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_tile_surface" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_tile_surface" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_tile_surface" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_tile_surface" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Depth / No Dive Markers</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_depth_markers" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_depth_markers" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_depth_markers" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_depth_markers" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Fence & Gate Controls</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_fence_gate" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_fence_gate" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_fence_gate" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_fence_gate" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Bathrooms & Supplies</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_bathrooms" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_bathrooms" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_bathrooms" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_bathrooms" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
       <div class="photo-btn">
         <label>📷 Attach Deck & Shell Photos <input type="file" name="photos_deck" accept="image/*" multiple style="display:none"></label>
       </div>
@@ -347,187 +770,6 @@
 </div>
 
 <script>
-  // PASTE YOUR GOOGLE WEB APP URL BETWEEN THE QUOTES BELOW:
-  const GOOGLE_SCRIPT_URL = "PASTE_YOUR_COPIED_URL_HERE";
-
-  function toggleDetails(radio, name) {
-    const detailsBox = document.getElementById('details_' + name);
-    const inputField = document.getElementById('input_' + name);
-    
-    if (radio && (radio.value === 'Repair' || radio.value === 'Replace')) {
-      if (detailsBox) detailsBox.style.display = 'block';
-      if (inputField) {
-        inputField.setAttribute('required', 'required');
-        inputField.focus();
-      }
-    } else if (detailsBox && inputField) {
-      detailsBox.style.display = 'none';
-      inputField.removeAttribute('required');
-      inputField.value = ''; 
-    }
-  }
-
-  function renderChecklist(containerId, items) {
-    const c = document.getElementById(containerId);
-    if (!c) return;
-    items.forEach(function(item) {
-      const name = item.toLowerCase().replace(/[^a-z0-9]/g, '_');
-      c.innerHTML += 
-        '<div class="status-item">' +
-          '<div class="status-row">' +
-            '<span class="status-label">' + item + '</span>' +
-            '<div class="status-options">' +
-              '<label><input type="radio" name="st_' + name + '" value="OK" checked onchange="toggleDetails(this, \'' + name + '\')"> OK</label>' +
-              '<label><input type="radio" name="st_' + name + '" value="Repair" onchange="toggleDetails(this, \'' + name + '\')"> Fix</label>' +
-              '<label><input type="radio" name="st_' + name + '" value="Replace" onchange="toggleDetails(this, \'' + name + '\')"> Replace</label>' +
-            '</div>' +
-          '</div>' +
-          '<div class="details-box" id="details_' + name + '">' +
-            '<input type="text" id="input_' + name + '" placeholder="Required: Explain what needs fix/replacement..." name="details_' + name + '">' +
-          '</div>' +
-        '</div>';
-    });
-  }
-
-  // Ensure DOM is fully loaded before building dynamic lists
-  document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. Render Gear & Safety
-    renderChecklist('maint-safety-list', [
-      'Vac Head / Hose / Pole', 'Rakes & Brushes', 'Power Vac & Battery',
-      'Test Kit / Salt Kit', 'First Aid / HazMat / Clean Kit', 
-      'Rescue Tubes / Ring Buoy / Rope', 'Signs (911, Rules, CPO, Drowning)',
-      'Shepherd Hook & Pole', 'Emergency Phone / Box', 'ADA Lift & SDS Manual'
-    ]);
-
-    // 2. Render Flow / Fitting items
-    renderChecklist('flow-filt-list', [
-      'Skimmers & Weirs', 'Grates & Return Eyes', 'Filter Lid O-Ring & Assembly',
-      'PSI Gauges & Air Bleed', 'Piping & Valves'
-    ]);
-
-    // 3. Render Deck & Shell
-    renderChecklist('deck-shell-list', [
-      'Handrails & Ladders', 'Guard Stands / Diving Board', 'Deck Condition & Drains',
-      'Coping & Expansion Joints', 'Pool Tile & Surface', 'Depth / No Dive Markers',
-      'Fence & Gate Controls', 'Bathrooms & Supplies'
-    ]);
-
-    // 4. Render Detailed Motor & Pump Sections #1 through #4
-    const pumpsContainer = document.getElementById('pumps-detailed-container');
-    if (pumpsContainer) {
-      for (let i = 1; i <= 4; i++) {
-        const prefix = 'p' + i;
-        pumpsContainer.innerHTML += 
-          '<div class="sub-section-title">Pump & Motor Equipment #' + i + '</div>' +
-          '<div class="grid-2">' +
-            '<div><label>Brand / Model</label><input type="text" name="' + prefix + '_brand" placeholder="e.g. Pentair WhisperFlo"></div>' +
-            '<div><label>Serial Number</label><input type="text" name="' + prefix + '_serial"></div>' +
-          '</div>' +
-          '<div class="grid-2">' +
-            '<div><label>Horsepower (HP)</label><input type="text" name="' + prefix + '_hp" placeholder="e.g. 2.0 HP"></div>' +
-            '<div><label>Phase / RPM / Frame</label><input type="text" name="' + prefix + '_specs" placeholder="Single / 3450 / 56Y"></div>' +
-          '</div>' +
-          '<div style="margin-top: 6px;">' +
-            '<label>Electrical Checks</label>' +
-            '<div class="checkbox-inline">' +
-              '<label><input type="checkbox" name="' + prefix + '_grounded" value="Yes"> Grounded</label>' +
-              '<label><input type="checkbox" name="' + prefix + '_gfci" value="Yes"> GFCI Breaker</label>' +
-              '<label><input type="checkbox" name="' + prefix + '_starter" value="Yes"> Starter</label>' +
-              '<label><input type="checkbox" name="' + prefix + '_timer" value="Yes"> Timer</label>' +
-            '</div>' +
-          '</div>' +
-          '<div class="lifespan-block">' +
-            '<div class="lifespan-title">Motor & Pump #' + i + ' - Estimated Remaining Lifespan:</div>' +
-            '<div class="radio-inline">' +
-              '<label><input type="radio" name="' + prefix + '_lifespan" value="1-2 years"> 1–2 yrs</label>' +
-              '<label><input type="radio" name="' + prefix + '_lifespan" value="3-5 years"> 3–5 yrs</label>' +
-              '<label><input type="radio" name="' + prefix + '_lifespan" value="5-7 years"> 5–7 yrs</label>' +
-              '<label><input type="radio" name="' + prefix + '_lifespan" value="7+ years"> 7+ yrs</label>' +
-            '</div>' +
-          '</div>' +
-          '<div class="status-item" style="margin-top: 6px;">' +
-            '<div class="status-row">' +
-              '<span class="status-label">Overall Motor & Pump Status</span>' +
-              '<div class="status-options">' +
-                '<label><input type="radio" name="st_' + prefix + '_status" value="OK" checked onchange="toggleDetails(this, \'' + prefix + '_status\')"> OK</label>' +
-                '<label><input type="radio" name="st_' + prefix + '_status" value="Repair" onchange="toggleDetails(this, \'' + prefix + '_status\')"> Fix</label>' +
-                '<label><input type="radio" name="st_' + prefix + '_status" value="Replace" onchange="toggleDetails(this, \'' + prefix + '_status\')"> Replace</label>' +
-              '</div>' +
-            '</div>' +
-            '<div class="details-box" id="details_' + prefix + '_status">' +
-              '<input type="text" id="input_' + prefix + '_status" placeholder="Required: Explain issues (impeller, volute, seals, lint pot, wire)..." name="details_' + prefix + '_status">' +
-            '</div>' +
-          '</div>';
-      }
-    }
-
-    // Handle Submission
-    document.getElementById('inspectionForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      submitBtn.innerText = "Uploading to Drive...";
-      submitBtn.disabled = true;
-
-      const formData = new FormData(this);
-      const fields = {};
-      const photos = [];
-
-      formData.forEach(function(value, key) {
-        if (!(value instanceof File)) {
-          fields[key] = value;
-        }
-      });
-
-      const fileInputs = this.querySelectorAll('input[type="file"]');
-      for (let input of fileInputs) {
-        if (input.files.length > 0) {
-          for (let file of input.files) {
-            const base64 = await convertBase64(file);
-            photos.push({
-              category: input.name,
-              data: base64
-            });
-          }
-        }
-      }
-
-      const payload = {
-        pool_name: fields['pool_name'],
-        date: fields['date'],
-        fields: fields,
-        photos: photos
-      };
-
-      try {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        alert('United Pools inspection report submitted successfully!');
-        this.reset();
-      } catch (err) {
-        alert('Upload error: ' + err.message);
-      } finally {
-        submitBtn.innerText = "Submit Inspection Report";
-        submitBtn.disabled = false;
-      }
-    });
-
-  });
-
-  function convertBase64(file) {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => resolve(fileReader.result);
-      fileReader.onerror = (error) => reject(error);
-    });
-  }
-  <script>
 // Paste your Google Apps Script Web App URL here:
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDla8IBqTcdV5cMl-qN0FHdAT25UAPCeuGTxOYOezwx4dTd1TO1ND0PIktV9CaUm9g/exec";
 
