@@ -16,6 +16,8 @@
       --text-dark: #0f172a;
       --danger-red: #d9534f;
       --danger-bg: #fff5f5;
+      --alert-bg: #fffbe6;
+      --alert-border: #ffe58f;
     }
     
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
@@ -89,6 +91,7 @@
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; }
     
     .checkbox-inline, .radio-inline {
       display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px;
@@ -111,6 +114,17 @@
       margin-bottom: 4px;
     }
 
+    .alert-box {
+      background: var(--alert-bg);
+      border: 1px solid var(--alert-border);
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #8c6b00;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
     .status-item { border-bottom: 1px dashed var(--border); padding: 8px 0; }
     .status-row { display: flex; align-items: center; justify-content: space-between; }
     .status-label { font-size: 0.88rem; font-weight: 500; flex: 1; color: var(--text-dark); }
@@ -119,10 +133,6 @@
 
     .details-input-static {
       margin-top: 6px;
-    }
-    .details-input-static input {
-      border-color: var(--border);
-      background-color: #ffffff;
     }
 
     .photo-btn {
@@ -169,16 +179,50 @@
       </div>
     </div>
 
-    <!-- CHEMICAL READINGS -->
+    <!-- CHEMICAL READINGS & FEED SYSTEM -->
     <div class="card">
       <div class="card-title">Chemical Readings & Feed System</div>
-      <div class="grid-3">
+      <div class="grid-4">
         <div><label>CYA (&lt;50)</label><input type="number" name="cya"></div>
         <div><label>Alk (60-180)</label><input type="number" name="alk"></div>
         <div><label>Phos (0)</label><input type="number" name="phos"></div>
+        <div><label>Salt (PPM)</label><input type="number" name="salt_ppm"></div>
       </div>
       
-      <label>Treatments Needed?</label>
+      <div class="sub-section-title">Salt Cell Diagnostics</div>
+      <div class="grid-3">
+        <div><label>Voltage (V)</label><input type="text" name="salt_volts"></div>
+        <div><label>Amps (A)</label><input type="text" name="salt_amps"></div>
+        <div><label>Amp Hours (Ah)</label><input type="text" name="salt_amp_hours"></div>
+      </div>
+      <div class="alert-box">
+        📷 Picture required if any cell readings (Voltage, Amps, or Amp Hours) are out of range.
+      </div>
+
+      <div class="sub-section-title">Feed Systems Check</div>
+      <label>Liquid Chlorine Feeder:</label>
+      <div class="checkbox-inline">
+        <label><input type="checkbox" name="liq_bubble_test" value="Pass"> Bubble Test</label>
+        <label><input type="checkbox" name="liq_injector" value="Pass"> Clear Injector</label>
+        <label><input type="checkbox" name="liq_neoprene" value="Pass"> Check Neoprene</label>
+        <label><input type="checkbox" name="liq_tubing" value="Pass"> Check Tubing</label>
+      </div>
+
+      <label>Chemical Controller:</label>
+      <div class="checkbox-inline">
+        <label><input type="checkbox" name="ctrl_sensors" value="Pass"> Sensors Check</label>
+        <label><input type="checkbox" name="ctrl_flow" value="Pass"> Flow Check</label>
+      </div>
+
+      <label>Erosion Feeder:</label>
+      <div class="checkbox-inline">
+        <label><input type="checkbox" name="ero_oring" value="Pass"> Lid O-Ring</label>
+        <label><input type="checkbox" name="ero_vent" value="Pass"> Vent Valve</label>
+        <label><input type="checkbox" name="ero_tubing" value="Pass"> Tubing</label>
+        <label><input type="checkbox" name="ero_valve" value="Pass"> Control Valve</label>
+      </div>
+
+      <label style="margin-top: 12px;">Treatments Needed?</label>
       <div class="checkbox-inline">
         <label><input type="checkbox" name="phos_remover"> Phos Remover</label>
         <label><input type="checkbox" name="enzyme"> Enzyme Treatment</label>
@@ -203,33 +247,42 @@
     <div class="card">
       <div class="card-title">Maintenance & Safety Gear</div>
       
-      <!-- ITEM 1 -->
       <div class="status-item">
         <div class="status-row">
-          <span class="status-label">Vac Head / Hose / Pole</span>
+          <span class="status-label">Extension Pole</span>
           <div class="status-options">
-            <label><input type="radio" name="st_vac_gear" value="OK" checked> OK</label>
-            <label><input type="radio" name="st_vac_gear" value="Repair"> Fix</label>
-            <label><input type="radio" name="st_vac_gear" value="Replace"> Replace</label>
+            <label><input type="radio" name="st_ext_pole" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_ext_pole" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_ext_pole" value="Replace"> Replace</label>
           </div>
         </div>
-        <div class="details-input-static"><input type="text" name="details_vac_gear" placeholder="Notes / Repair details if needed..."></div>
+        <div class="details-input-static"><input type="text" name="details_ext_pole" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 2 -->
       <div class="status-item">
         <div class="status-row">
-          <span class="status-label">Rakes & Brushes</span>
+          <span class="status-label">Safety Pole</span>
           <div class="status-options">
-            <label><input type="radio" name="st_rakes_brushes" value="OK" checked> OK</label>
-            <label><input type="radio" name="st_rakes_brushes" value="Repair"> Fix</label>
-            <label><input type="radio" name="st_rakes_brushes" value="Replace"> Replace</label>
+            <label><input type="radio" name="st_safety_pole" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_safety_pole" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_safety_pole" value="Replace"> Replace</label>
           </div>
         </div>
-        <div class="details-input-static"><input type="text" name="details_rakes_brushes" placeholder="Notes / Repair details if needed..."></div>
+        <div class="details-input-static"><input type="text" name="details_safety_pole" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 3 -->
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Skimmer Net & Brushes</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_skimmer_net_brush" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_skimmer_net_brush" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_skimmer_net_brush" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_skimmer_net_brush" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
       <div class="status-item">
         <div class="status-row">
           <span class="status-label">Power Vac & Battery</span>
@@ -242,7 +295,6 @@
         <div class="details-input-static"><input type="text" name="details_power_vac" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 4 -->
       <div class="status-item">
         <div class="status-row">
           <span class="status-label">Test Kit / Salt Kit</span>
@@ -255,7 +307,6 @@
         <div class="details-input-static"><input type="text" name="details_test_kits" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 5 -->
       <div class="status-item">
         <div class="status-row">
           <span class="status-label">First Aid / HazMat / Clean Kit</span>
@@ -268,7 +319,6 @@
         <div class="details-input-static"><input type="text" name="details_safety_kits" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 6 -->
       <div class="status-item">
         <div class="status-row">
           <span class="status-label">Rescue Tubes / Ring Buoy / Rope</span>
@@ -281,7 +331,6 @@
         <div class="details-input-static"><input type="text" name="details_rescue_equip" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 7 -->
       <div class="status-item">
         <div class="status-row">
           <span class="status-label">Safety Signs (911, Rules, CPO, Drowning)</span>
@@ -294,10 +343,9 @@
         <div class="details-input-static"><input type="text" name="details_safety_signs" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 8 -->
       <div class="status-item">
         <div class="status-row">
-          <span class="status-label">Shepherd Hook & Pole</span>
+          <span class="status-label">Shepherd Hook & Wing Nuts</span>
           <div class="status-options">
             <label><input type="radio" name="st_shepherd_hook" value="OK" checked> OK</label>
             <label><input type="radio" name="st_shepherd_hook" value="Repair"> Fix</label>
@@ -307,7 +355,6 @@
         <div class="details-input-static"><input type="text" name="details_shepherd_hook" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 9 -->
       <div class="status-item">
         <div class="status-row">
           <span class="status-label">Emergency Phone & Box</span>
@@ -320,7 +367,6 @@
         <div class="details-input-static"><input type="text" name="details_emerg_phone" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
-      <!-- ITEM 10 -->
       <div class="status-item">
         <div class="status-row">
           <span class="status-label">ADA Lift & SDS Manual</span>
@@ -331,6 +377,18 @@
           </div>
         </div>
         <div class="details-input-static"><input type="text" name="details_ada_sds" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Pump Room Chemical Log Book</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_chem_logbook" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_chem_logbook" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_chem_logbook" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_chem_logbook" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
       <div class="photo-btn">
@@ -436,6 +494,18 @@
           </div>
         </div>
         <div class="details-input-static"><input type="text" name="details_grates_returns" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Equalizer Covers</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_equalizer_covers" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_equalizer_covers" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_equalizer_covers" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_equalizer_covers" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
       <div class="status-item">
@@ -655,6 +725,13 @@
         </div>
       </div>
 
+      <div class="grid-2" style="margin-top: 8px;">
+        <div><label># Cover Grommets Needing Replace</label><input type="number" name="grommets_replace_count" placeholder="0"></div>
+        <div style="display:flex; align-items:flex-end; padding-bottom:6px;">
+          <label style="cursor:pointer; margin:0;"><input type="checkbox" name="grommets_put_down" value="Confirmed"> Confirm All Grommets Put Down</label>
+        </div>
+      </div>
+
       <div class="status-item">
         <div class="status-row">
           <span class="status-label">Handrails & Ladders</span>
@@ -689,6 +766,18 @@
           </div>
         </div>
         <div class="details-input-static"><input type="text" name="details_deck_drains" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
+          <span class="status-label">Drinking Fountain Check</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_drinking_fountain" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_drinking_fountain" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_drinking_fountain" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_drinking_fountain" placeholder="Notes / Repair details if needed..."></div>
       </div>
 
       <div class="status-item">
@@ -741,6 +830,18 @@
 
       <div class="status-item">
         <div class="status-row">
+          <span class="status-label">Lockbox Check</span>
+          <div class="status-options">
+            <label><input type="radio" name="st_lockbox" value="OK" checked> OK</label>
+            <label><input type="radio" name="st_lockbox" value="Repair"> Fix</label>
+            <label><input type="radio" name="st_lockbox" value="Replace"> Replace</label>
+          </div>
+        </div>
+        <div class="details-input-static"><input type="text" name="details_lockbox" placeholder="Notes / Repair details if needed..."></div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-row">
           <span class="status-label">Bathrooms & Supplies</span>
           <div class="status-options">
             <label><input type="radio" name="st_bathrooms" value="OK" checked> OK</label>
@@ -759,7 +860,16 @@
     <!-- NOTES & OVERRIDES -->
     <div class="card">
       <div class="card-title">County Requirements & Notes</div>
+      
+      <div style="margin-bottom: 10px;">
+        <label><input type="checkbox" name="cpo_cert_hung" value="Yes"> CPO Certificate hung in pump room</label>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <label><input type="checkbox" name="inspection_report_posted" value="Yes"> Most recent inspection report posted in public view</label>
+      </div>
+
       <textarea placeholder="List specific county requirements, replacement items, or extra inspection notes here..." name="notes"></textarea>
+      
       <div class="photo-btn">
         <label>📷 Attach General Photos <input type="file" name="photos_general" accept="image/*" multiple style="display:none"></label>
       </div>
@@ -768,6 +878,73 @@
     <button type="submit" class="submit-btn">Submit Inspection Report</button>
   </form>
 </div>
+
+<script>
+  // PASTE YOUR GOOGLE WEB APP URL BETWEEN THE QUOTES BELOW:
+  const GOOGLE_SCRIPT_URL = "PASTE_YOUR_COPIED_URL_HERE";
+
+  document.getElementById('inspectionForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    submitBtn.innerText = "Uploading to Drive...";
+    submitBtn.disabled = true;
+
+    const formData = new FormData(this);
+    const fields = {};
+    const photos = [];
+
+    formData.forEach(function(value, key) {
+      if (!(value instanceof File)) {
+        fields[key] = value;
+      }
+    });
+
+    const fileInputs = this.querySelectorAll('input[type="file"]');
+    for (let input of fileInputs) {
+      if (input.files.length > 0) {
+        for (let file of input.files) {
+          const base64 = await convertBase64(file);
+          photos.push({
+            category: input.name,
+            data: base64
+          });
+        }
+      }
+    }
+
+    const payload = {
+      pool_name: fields['pool_name'],
+      date: fields['date'],
+      fields: fields,
+      photos: photos
+    };
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      alert('United Pools inspection report submitted successfully!');
+      this.reset();
+    } catch (err) {
+      alert('Upload error: ' + err.message);
+    } finally {
+      submitBtn.innerText = "Submit Inspection Report";
+      submitBtn.disabled = false;
+    }
+  });
+
+  function convertBase64(file) {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => resolve(fileReader.result);
+      fileReader.onerror = (error) => reject(error);
+    });
+  }
 
 <script>
 // Paste your Google Apps Script Web App URL here:
